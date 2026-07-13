@@ -1,0 +1,8 @@
+{
+  "name": "closerfit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "CloserFit — diagnóstico interactivo de preparación para ventas remotas.",
+  "dependencies": { "@supabase/supabase-js": "2.110.2" }
+}
