@@ -33,10 +33,6 @@ export default async function handler(req, res) {
     const { error } = await supabase.from('closerfit_diagnostics').insert({ full_name, email, score, category, answers, source: 'closerfit' });
     if (error?.code === '23505') return res.status(200).json({ ok: true, message: 'Tu plan ya está reservado. Revisa tu correo pronto.' });
     if (error) { console.error('Supabase:', error); return res.status(502).json({ error: 'No pude guardar tu plan. Intenta de nuevo.' }); }
-    if (process.env.RESEND_API_KEY && process.env.EMAIL_FROM) {
-      const html = `<div style="font-family:Arial,sans-serif;background:#f6f8fc;padding:32px;color:#10213b"><div style="max-width:560px;margin:auto;background:#fff;border-top:5px solid #21d4c2;padding:28px;border-radius:16px"><p style="color:#0aa998;font-weight:bold">CLOSERFIT</p><h1>Gracias por probar mi app.</h1><p>Hola ${full_name},</p><p>Si estás en el mundo de las ventas, espero que este feedback te dé claridad para tu próximo cierre.</p><p>Y si solo tenías curiosidad por probarla, espero que te haya gustado y que te vaya increíble en tu proyecto.</p><p><b>Tu resultado: ${score}/12 · ${category}</b></p></div></div>`;
-      fetch('https://api.resend.com/emails', { method: 'POST', headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ from: process.env.EMAIL_FROM, to: [email], subject: 'Gracias por probar CloserFit', html }) }).catch((error) => console.error('Resend:', error));
-    }
     return res.status(200).json({ ok: true, message: 'Plan reservado. Te llegará tu hoja de ruta personalizada.' });
   } catch (error) { console.error('Lead:', error); return res.status(500).json({ error: 'Ocurrió un error inesperado.' }); }
 }
