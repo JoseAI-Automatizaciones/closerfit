@@ -4,5 +4,8 @@
   "private": true,
   "type": "module",
   "description": "CloserFit — diagnóstico interactivo de preparación para ventas remotas.",
-  "dependencies": { "@supabase/supabase-js": "2.110.2" }
+  "dependencies": {
+    "@supabase/supabase-js": "2.110.2",
+    "pdf-lib": "1.17.1"
+  }
 }

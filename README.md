@@ -20,3 +20,6 @@ La service role key solo se usa en `api/lead.js`. La tabla `closerfit_diagnostic
 
 ## Correo de agradecimiento (opcional)
 Configura RESEND_API_KEY y EMAIL_FROM en Vercel para enviar el mensaje de agradecimiento de CloserFit. El remitente debe estar verificado en Resend.
+
+## PDF descargable
+El endpoint pi/plan.js genera un PDF personalizado de siete días mediante pdf-lib después de guardar el lead.
