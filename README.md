@@ -17,3 +17,6 @@ La service role key solo se usa en `api/lead.js`. La tabla `closerfit_diagnostic
 
 ## Desarrollo
 `npm install` y luego `vercel dev`.
+
+## Correo de agradecimiento (opcional)
+Configura RESEND_API_KEY y EMAIL_FROM en Vercel para enviar el mensaje de agradecimiento de CloserFit. El remitente debe estar verificado en Resend.
